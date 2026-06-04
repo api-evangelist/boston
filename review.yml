@@ -1,0 +1,42 @@
+---
+name: Boston University
+description: Boston University public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      Boston University's public, machine-readable API footprint is limited. The
+      one clearly public, documented-by-protocol interface verified live is the
+      OpenBU DSpace OAI-PMH endpoint, which returned a valid Identify response
+      (repositoryName "OpenBU"). An internal "WEB APIs" portal at webapi.bu.edu
+      is referenced but does not resolve publicly (NXDOMAIN / connection refused
+      from off-network), so it is treated as gated and no endpoints were
+      invented. AI API access via Azure OpenAI / Amazon Bedrock is gated behind a
+      request form. The bu-ist GitHub org exists but hosts WordPress tooling, not
+      open API specs. No fabricated endpoints; all entries reflect probed status.
+    endpoints:
+      - url: https://open.bu.edu/server/oai/request?verb=Identify
+        status: 200
+        note: Live OAI-PMH 2.0 Identify; repositoryName OpenBU, DSpace repository.
+      - url: https://open.bu.edu/
+        status: 200
+        note: OpenBU institutional repository home page (public).
+      - url: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
+        status: 200
+        note: AI API key access page; gated, request form required, no public base URL.
+      - url: https://webapi.bu.edu/
+        status: 0
+        note: Referenced internal API portal; does not resolve publicly (NXDOMAIN / refused).
+      - url: https://github.com/bu-ist
+        status: 200
+        note: Boston University IS&T GitHub org; WordPress/web tooling, no open API specs.
+      - url: https://www.bu.edu/
+        status: 200
+        note: Official institution website.
+      - url: https://www.linkedin.com/school/boston-university/
+        status: 200
+        note: Official LinkedIn school page.
+---

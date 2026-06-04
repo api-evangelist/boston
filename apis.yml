@@ -1,0 +1,79 @@
+---
+aid: boston
+name: Boston University
+description: >-
+  Boston University is a private research university in Boston, Massachusetts,
+  chartered in 1869, ranked #88 in the QS World University Rankings 2025. It
+  serves over 34,000 students across three campuses with 300+ programs of study.
+  Its public developer/API footprint is modest and largely gated: the most
+  clearly public, machine-readable interface is the OpenBU institutional
+  repository (DSpace) OAI-PMH endpoint. Boston University also references an
+  internal API portal (webapi.bu.edu) and offers gated LLM API key access via
+  Azure OpenAI and Amazon Bedrock through IS&T, but those are not publicly
+  reachable or documented without authorization.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Library
+  - Open Data
+  - United States
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: boston:openbu-oai
+    name: OpenBU Repository OAI-PMH API
+    description: >-
+      OpenBU is Boston University Libraries' open-access institutional
+      repository, built on DSpace. It exposes a publicly accessible OAI-PMH 2.0
+      endpoint for harvesting metadata (theses, dissertations, journal articles,
+      reports and more). The Identify verb resolves live with repository name
+      "OpenBU" and supports standard OAI-PMH verbs (Identify, ListRecords,
+      ListSets, GetRecord, ListMetadataFormats, ListIdentifiers).
+    humanURL: https://open.bu.edu/
+    baseURL: https://open.bu.edu/server/oai/request
+    tags: [ Library, Open Data, Repository, OAI-PMH, Metadata, Research ]
+    properties:
+      - type: Documentation
+        url: https://open.bu.edu/
+  - aid: boston:ai-api-access
+    name: AI API Access (Azure OpenAI / Amazon Bedrock)
+    description: >-
+      Boston University IS&T provides gated access to Large Language Model API
+      keys for academic and research use, brokering frontier models via
+      Microsoft Azure OpenAI and Amazon Bedrock (including Anthropic models).
+      Access is restricted to faculty, researchers, staff and departments,
+      requires financial-administrator approval and an AI API Key Request Form,
+      and IS&T supplies provisioning details and documentation only after
+      approval. No public base URL or open documentation is available.
+    humanURL: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
+    tags: [ AI, LLM, Gated, Azure OpenAI, Amazon Bedrock ]
+    properties:
+      - type: Documentation
+        url: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
+common:
+  - type: Website
+    url: https://www.bu.edu/
+  - type: GitHub
+    url: https://github.com/bu-ist
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/boston-university/
+  - type: Plans
+    url: plans/boston-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/boston-rate-limits.yml
+  - type: FinOps
+    url: finops/boston-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+---
