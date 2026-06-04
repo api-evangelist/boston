@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "oai": "http://www.openarchives.org/OAI/2.0/",
+    "bu": "https://www.bu.edu/ns/vocab#",
+    "@vocab": "https://www.bu.edu/ns/vocab#",
+
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "legalName": "schema:legalName",
+    "url": "schema:url",
+    "logo": "schema:logo",
+    "foundingDate": "schema:foundingDate",
+    "description": "schema:description",
+    "address": "schema:address",
+    "department": "schema:department",
+    "sameAs": "schema:sameAs",
+
+    "api": {
+      "@id": "bu:api",
+      "@type": "@id"
+    },
+    "endpoint": {
+      "@id": "schema:EntryPoint",
+      "@type": "@id"
+    },
+    "baseURL": "schema:urlTemplate",
+    "documentation": "schema:documentation",
+    "protocol": "bu:protocol",
+
+    "repository": {
+      "@id": "bu:repository",
+      "@type": "@id"
+    },
+    "record": {
+      "@id": "bu:Record",
+      "@type": "@id"
+    },
+    "identifier": "dc:identifier",
+    "datestamp": "dcterms:modified",
+    "setSpec": "bu:setSpec",
+    "title": "dc:title",
+    "creator": "dc:creator",
+    "subject": "dc:subject",
+    "date": "dc:date",
+    "type": "dc:type",
+    "language": "dc:language",
+    "rights": "dc:rights",
+    "format": "dc:format",
+    "publisher": "dc:publisher",
+    "metadataPrefix": "bu:metadataPrefix"
+  },
+  "@type": "institution",
+  "name": "Boston University",
+  "legalName": "Trustees of Boston University",
+  "url": "https://www.bu.edu/",
+  "foundingDate": "1869",
+  "description": "Private research university in Boston, Massachusetts, serving over 34,000 students across three campuses.",
+  "sameAs": [
+    "https://github.com/bu-ist",
+    "https://www.linkedin.com/school/boston-university/"
+  ],
+  "department": {
+    "@type": "institution",
+    "name": "Boston University Libraries",
+    "url": "https://www.bu.edu/library/"
+  },
+  "api": [
+    {
+      "@type": "api",
+      "name": "OpenBU Repository OAI-PMH API",
+      "url": "https://open.bu.edu/",
+      "protocol": "OAI-PMH 2.0",
+      "repository": {
+        "@type": "repository",
+        "name": "OpenBU",
+        "url": "https://open.bu.edu/",
+        "endpoint": {
+          "@type": "endpoint",
+          "baseURL": "https://open.bu.edu/server/oai/request",
+          "metadataPrefix": [
+            "oai_dc",
+            "qdc",
+            "mods",
+            "marc",
+            "dim",
+            "didl",
+            "etdms",
+            "uketd_dc"
+          ]
+        }
+      }
+    }
+  ]
+}
