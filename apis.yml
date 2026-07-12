@@ -59,6 +59,8 @@ apis:
       - type: Documentation
         url: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
 common:
+  - type: DomainSecurity
+    url: security/boston-domain-security.yml
   - type: Website
     url: https://www.bu.edu/
   - type: GitHub
