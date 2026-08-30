@@ -1,106 +1,347 @@
 ---
 aid: boston
 name: Boston University
+x-type: university
+x-category: Private Research University
 description: >-
-  Boston University is a private research university in Boston, Massachusetts,
-  chartered in 1869, ranked #88 in the QS World University Rankings 2025. It
-  serves over 34,000 students across three campuses with 300+ programs of study.
-  Its public developer/API footprint is modest and largely gated: the most
-  clearly public, machine-readable interface is the OpenBU institutional
-  repository (DSpace) OAI-PMH endpoint. Boston University also references an
-  internal API portal (webapi.bu.edu) and offers gated LLM API key access via
-  Azure OpenAI and Amazon Bedrock through IS&T, but those are not publicly
-  reachable or documented without authorization.
+  Boston University is a private research university in Boston, Massachusetts, chartered in 1869,
+  serving roughly 37,000 students across three campuses. Like most universities it is a federation
+  of buyers rather than an API producer, and its programmable footprint has to be read that way.
+  The one substantial machine-readable interface Boston University both operates AND authors is the
+  WordPress REST API on www.bu.edu: nine of its fifteen namespaces are BU IS&T's own plugins —
+  bu-alert, bu-blocks, bu-navigation, bu-slideshow, bu-tts and others — open-sourced at
+  github.com/bu-ist and documented at developer.bu.edu, with some routes public and some returning
+  401. Alongside it, Boston University operates a Shibboleth SAML 2.0 identity provider at
+  shib.bu.edu whose entity metadata is public, registered by InCommon and exported to eduGAIN with
+  the REFEDS Research & Scholarship and SIRTFI entity categories. Everything else that looks like a
+  Boston University API is a vendor's contract running under BU's name: OpenBU is a DSpace 7.6
+  instance operated by Atmire (open.bu.edu CNAMEs to boston-prod.cname.atmire.com and its OAI-PMH
+  Identify returns the vendor's admin email), the library discovery layer is Ex Libris Primo, and
+  the LMS is Blackboard Learn. Those are recorded here as tenant relationships, not as Boston
+  University engineering. There is no central developer portal, no API key programme, no published
+  API changelog, and the internal WEB APIs portal at webapi.bu.edu is NXDOMAIN.
 type: Index
-deliveryModel:
-  model: saas
-  open_source: false
-  commercial: true
-  callable_host: false
-  label: Hosted service · you call their endpoint
-  confidence: medium
-  source:
-  - pricing
-  generated: '2026-08-28'
-  method: derived
-accessModel:
-  pricing: free
-  onboarding: unknown
-  trial: false
-  try_now: false
-  public: false
-  label: Free
-  confidence: medium
-  source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/boston.png
 url: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/apis.yml
-tags:
-  - Education
-  - Higher Education
-  - University
-  - Research
-  - Library
-  - Open Data
-  - United States
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 specificationVersion: '0.23'
+tags:
+  - University
+  - Higher Education
+  - Education
+  - United States
+  - Massachusetts
+  - Private Research University
+  - Research
+  - Research Data
+  - Library
+  - Identity Federation
+  - Content Management
+  - Open Access
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Institution-operated endpoints · you call their host
+  confidence: high
+  source:
+    - probed
+  generated: '2026-08-30'
+  method: probed
+accessModel:
+  pricing: free
+  onboarding: none
+  trial: false
+  try_now: true
+  public: true
+  label: Free · partially public, no registration offered
+  confidence: high
+  source:
+    - probed
+  generated: '2026-08-30'
+  method: probed
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Two institution-operated, institution-authored machine-readable surfaces were found and verified
+    live: the WordPress REST API on www.bu.edu (237 routes across 15 namespaces, of which 31 routes
+    in 9 namespaces are Boston University's own plugins) and the Shibboleth SAML 2.0 identity
+    provider metadata at shib.bu.edu. Three further surfaces are real but vendor-operated and are
+    recorded as tenant relationships rather than credited to the institution: OpenBU (DSpace 7.6 on
+    Atmire), Ex Libris Primo library discovery, and Blackboard Learn. Boston University publishes no
+    developer portal, no API key programme, no OpenAPI, no llms.txt, no /.well-known/security.txt
+    and no apis.json — all four were probed and returned a real HTTP 404, not a soft 404. The
+    previously catalogued internal portal at webapi.bu.edu is NXDOMAIN. Course catalog, registrar,
+    dining, transit, open-data-portal and research-computing API surfaces were hunted and none was
+    found; bus.bu.edu is a student-built shuttle tracker (BostonHacks) served from GitHub Pages on a
+    delegated bu.edu subdomain with no API of its own, and profiles.bu.edu is a Profiles RNS
+    deployment on Boston University's own network with no reachable API (four candidate API paths
+    returned 404).
+  evidence:
+    - url: https://www.bu.edu/wp-json/
+      status: 200
+    - url: https://www.bu.edu/wp-json/wp/v2/pages?per_page=1
+      status: 200
+    - url: https://www.bu.edu/wp-json/bu-blocks/v1/search
+      status: 200
+    - url: https://www.bu.edu/wp-json/bu-slideshow/v1/shows
+      status: 401
+    - url: https://shib.bu.edu/idp/shibboleth
+      status: 200
+    - url: https://open.bu.edu/server/oai/request?verb=Identify
+      status: 200
+    - url: https://open.bu.edu/server/api
+      status: 200
+    - url: https://learn.bu.edu/learn/api/public/v1/system/version
+      status: 200
+    - url: https://bu.primo.exlibrisgroup.com/discovery/search?vid=01BOSU_INST:BULS
+      status: 200
+    - url: https://profiles.bu.edu/search/
+      status: 200
+    - url: https://profiles.bu.edu/ProfilesRNSAPI
+      status: 404
+    - url: https://www.bu.edu/llms.txt
+      status: 404
+    - url: https://www.bu.edu/apis.json
+      status: 404
+    - url: https://www.bu.edu/.well-known/security.txt
+      status: 404
+    - url: https://webapi.bu.edu/
+      status: 0
+  generated: '2026-08-30'
+  method: probed
 apis:
-  - aid: boston:openbu-oai
-    name: OpenBU Repository OAI-PMH API
+  - aid: boston:wordpress-rest-api
+    name: Boston University WordPress REST API
+    x-operator: institution
     description: >-
-      OpenBU is Boston University Libraries' open-access institutional
-      repository, built on DSpace. It exposes a publicly accessible OAI-PMH 2.0
-      endpoint for harvesting metadata (theses, dissertations, journal articles,
-      reports and more). The Identify verb resolves live with repository name
-      "OpenBU" and supports standard OAI-PMH verbs (Identify, ListRecords,
-      ListSets, GetRecord, ListMetadataFormats, ListIdentifiers).
+      The WordPress REST API on Boston University's own web platform, and the one substantial
+      machine-readable interface the institution both operates and authors. Its discovery document
+      advertises 237 routes across 15 namespaces; nine of those namespaces — bu-alert,
+      bu-access-control, bu-blocks, bu-cmb2-customizations, bu-navigation, bu-prepress,
+      bu-site-manager, bu-slideshow and bu-tts, 31 routes in total — are implemented by WordPress
+      plugins Boston University IS&T writes, open-sources at github.com/bu-ist and documents at
+      developer.bu.edu. Read routes including /wp/v2/pages, /wp/v2/types, /wp/v2/taxonomies,
+      /bu-blocks/v1/search and the per-namespace discovery documents answer anonymous callers;
+      privileged routes such as /bu-navigation/v1/parents and /bu-access-control/v1/get-groups
+      return HTTP 401 rest_forbidden. Boston University does not present this as a product: there is
+      no developer registration, no key, no rate-limit statement and no changelog. The OpenAPI in
+      this repository was derived from the live discovery document, not published by BU.
+    humanURL: https://developer.bu.edu/
+    baseURL: https://www.bu.edu/wp-json
+    tags:
+      - Content Management
+      - WordPress
+      - Open Source
+      - Publishing
+      - Web
+    properties:
+      - type: OpenAPI
+        url: openapi/boston-wordpress-api-openapi.yml
+      - type: x-openapi-original
+        url: openapi/_original/boston-wordpress-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/boston-wordpress-schemas.json
+      - type: Examples
+        url: examples/boston-wordpress-examples.yml
+      - type: Authentication
+        url: authentication/boston-authentication.yml
+      - type: Errors
+        url: errors/boston-errors.yml
+      - type: Documentation
+        url: https://developer.bu.edu/
+      - type: SourceCode
+        url: https://github.com/bu-ist
+  - aid: boston:shibboleth-identity-federation
+    name: Boston University Shibboleth Identity Provider
+    x-operator: institution
+    description: >-
+      Boston University's SAML 2.0 identity provider, publishing machine-readable entity metadata at
+      its own host. The EntityDescriptor carries entityID https://shib.bu.edu/idp/shibboleth, the
+      Shibboleth scopes bu.edu and alum.bu.edu, and SingleSignOnService bindings for HTTP-POST,
+      HTTP-POST-SimpleSign and HTTP-Redirect. The entity is registered by InCommon and exported to
+      eduGAIN, the SWAMID Federation and the UK Access Management Federation, and asserts the REFEDS
+      Research & Scholarship, SIRTFI and InCommon Research & Scholarship entity categories. This is
+      institution-operated by definition and is the cleanest example in this profile of Boston
+      University publishing a machine-readable contract of its own.
+    humanURL: https://met.refeds.org/met/entity/https%3A%2F%2Fshib.bu.edu%2Fidp%2Fshibboleth/
+    baseURL: https://shib.bu.edu/idp/shibboleth
+    tags:
+      - Identity Federation
+      - SAML
+      - Shibboleth
+      - InCommon
+      - eduGAIN
+      - Single Sign-On
+    properties:
+      - type: Metadata
+        url: conformance/boston-shibboleth-idp-metadata.xml
+      - type: Conformance
+        url: conformance/boston-conformance.yml
+      - type: Documentation
+        url: https://met.refeds.org/met/entity/https%3A%2F%2Fshib.bu.edu%2Fidp%2Fshibboleth/
+  - aid: boston:openbu-oai
+    name: OpenBU Repository — OAI-PMH and DSpace REST (Atmire-operated)
+    x-operator: tenant
+    x-vendor: Atmire
+    x-vendor-evidence: >-
+      open.bu.edu is a CNAME to boston-prod.cname.atmire.com; the OAI-PMH Identify response returns
+      adminEmail atmirenv@gmail.com; the DSpace REST root advertises atmire-versions and
+      atmirevaluepair endpoints.
+    description: >-
+      OpenBU is Boston University Libraries' open-access institutional repository. The content, the
+      collections and the 2144 Handle prefix are Boston University's; the software is DSpace 7.6 and
+      the deployment is Atmire's. Both the OAI-PMH 2.0 endpoint and the DSpace 7 REST API answer
+      anonymous callers — Identify returns repositoryName OpenBU with an earliest datestamp of
+      2005-08-12, ListMetadataFormats offers eight prefixes (oai_dc, qdc, mods, marc, dim, etdms,
+      didl, uketd_dc) and ListSets returns 100 sets. Recorded as a tenant relationship: the
+      repository is a real institutional surface, the contract describing it belongs to DSpace and
+      Atmire, and no DSpace or Figshare specification is saved under this institution's slug.
     humanURL: https://open.bu.edu/
     baseURL: https://open.bu.edu/server/oai/request
-    tags: [ Library, Open Data, Repository, OAI-PMH, Metadata, Research ]
+    tags:
+      - Research Data
+      - Open Access
+      - Institutional Repository
+      - OAI-PMH
+      - DSpace
+      - Library
+      - Metadata
     properties:
       - type: Documentation
         url: https://open.bu.edu/
+      - type: Conformance
+        url: conformance/boston-conformance.yml
+  - aid: boston:primo-discovery
+    name: BU Libraries Discovery (Ex Libris Primo)
+    x-operator: tenant
+    x-vendor: Ex Libris (Clarivate)
+    x-vendor-evidence: >-
+      Institution-specific subdomain on the vendor's own registrable domain,
+      bu.primo.exlibrisgroup.com, with Boston University's view identifier vid=01BOSU_INST:BULS.
+    description: >-
+      Boston University Libraries' discovery layer runs on Ex Libris Primo under Boston University's
+      tenant view 01BOSU_INST:BULS. The catalogue data is the library's; the discovery API surface
+      belongs to Ex Libris and is documented on the vendor's developer network, not Boston
+      University's. No Ex Libris specification is saved under this institution's slug. Recorded so
+      that the library's real programmable surface is legible and correctly attributed.
+    humanURL: https://bu.primo.exlibrisgroup.com/discovery/search?vid=01BOSU_INST:BULS
+    tags:
+      - Library
+      - Discovery
+      - Ex Libris
+      - Primo
+      - Catalog
+    properties:
+      - type: Documentation
+        url: https://www.bu.edu/library/
+  - aid: boston:blackboard-learn
+    name: Blackboard Learn REST API (BU tenant)
+    x-operator: tenant
+    x-vendor: Anthology / Blackboard
+    x-vendor-evidence: >-
+      learn.bu.edu is a CNAME to bu.blackboard.com and on to
+      learn.5deff46c33361.use1.prod-02.core.blackboard.com.
+    description: >-
+      Boston University's learning management system is Blackboard Learn, running on the vendor's
+      infrastructure behind a bu.edu hostname. The Learn public REST API responds at
+      /learn/api/public/v1/ — the unauthenticated system version endpoint returns Learn 4000.21.0
+      build rel.28+435d029 — while data endpoints such as /courses return HTTP 401. The contract is
+      Blackboard's; only the tenancy is Boston University's, so no Blackboard specification is saved
+      under this institution's slug.
+    humanURL: https://learn.bu.edu/
+    baseURL: https://learn.bu.edu/learn/api/public/v1
+    x-baseurl-probe:
+      status: 400
+      note: >-
+        The API base itself carries no resource and returns 400, which is normal. The live child
+        verified on 2026-08-30 is /system/version (HTTP 200); /courses returns 401. Recorded so a
+        pointer-liveness pass does not read this base as dead.
+    tags:
+      - Learning Management
+      - Blackboard
+      - Education Technology
+      - Teaching
+    properties:
+      - type: Documentation
+        url: https://www.bu.edu/tech/support/
   - aid: boston:ai-api-access
     name: AI API Access (Azure OpenAI / Amazon Bedrock)
+    x-operator: tenant
+    x-vendor: Microsoft Azure OpenAI / Amazon Bedrock
     description: >-
-      Boston University IS&T provides gated access to Large Language Model API
-      keys for academic and research use, brokering frontier models via
-      Microsoft Azure OpenAI and Amazon Bedrock (including Anthropic models).
-      Access is restricted to faculty, researchers, staff and departments,
-      requires financial-administrator approval and an AI API Key Request Form,
-      and IS&T supplies provisioning details and documentation only after
-      approval. No public base URL or open documentation is available.
+      Boston University IS&T brokers Large Language Model API keys to affiliated faculty,
+      researchers, staff and departments, reselling access to Microsoft Azure OpenAI and Amazon
+      Bedrock (including Anthropic models). Access requires financial-administrator approval and an
+      AI API Key Request Form, and provisioning details are supplied only after approval. There is
+      no public base URL and no public documentation, and the APIs themselves are the cloud
+      vendors' — what Boston University operates is the key-issuing process, which is not a
+      machine-readable interface. Recorded as a tenant relationship and deliberately not credited
+      as institutional engineering.
     humanURL: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
     tags:
-    - Artificial Intelligence
-    - LLM
-    - Gated
-    - Azure OpenAI
-    - Amazon Bedrock
-    tags_raw:
-    - AI
-    - LLM
-    - Gated
-    - Azure OpenAI
-    - Amazon Bedrock
+      - Artificial Intelligence
+      - LLM
+      - Gated
+      - Azure OpenAI
+      - Amazon Bedrock
     properties:
       - type: Documentation
         url: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
+      - type: Authentication
+        url: authentication/boston-authentication.yml
 common:
-  - type: DomainSecurity
-    url: security/boston-domain-security.yml
   - type: Website
     url: https://www.bu.edu/
-  - type: GitHub
+  - type: Documentation
+    url: https://developer.bu.edu/
+  - type: GitHubOrganization
     url: https://github.com/bu-ist
+  - type: SourceCode
+    url: https://github.com/bu-rcs
+  - type: IdentityFederation
+    url: https://shib.bu.edu/idp/shibboleth
+  - type: ResearchRepository
+    url: https://open.bu.edu/
+  - type: LibraryCatalog
+    url: https://bu.primo.exlibrisgroup.com/discovery/search?vid=01BOSU_INST:BULS
+  - type: ResearchComputing
+    url: https://www.bu.edu/tech/support/research/
+  - type: AIPolicy
+    url: https://www.bu.edu/aida/ai-education/ai-at-work/generative-ai-guidelines-for-bu-faculty-staff/
+  - type: AITooling
+    url: https://www.bu.edu/aida/
+  - type: Support
+    url: https://www.bu.edu/tech/support/
+  - type: TermsOfService
+    url: https://www.bu.edu/policies/conditions-of-use-policy-computing-ethics/
+  - type: PrivacyPolicy
+    url: https://www.bu.edu/policies/digital-privacy-statement/
+  - type: Blog
+    url: https://www.bu.edu/today/
+  - type: BlogRSS
+    url: https://www.bu.edu/today/feed/
   - type: LinkedIn
     url: https://www.linkedin.com/school/boston-university/
+  - type: Conformance
+    url: conformance/boston-conformance.yml
+  - type: Authentication
+    url: authentication/boston-authentication.yml
+  - type: Errors
+    url: errors/boston-errors.yml
+  - type: Lifecycle
+    url: lifecycle/boston-lifecycle.yml
+  - type: Vocabulary
+    url: vocabulary/boston-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/boston-context.jsonld
+  - type: DomainSecurity
+    url: security/boston-domain-security.yml
   - type: Plans
     url: plans/boston-plans-pricing.yml
   - type: RateLimits
