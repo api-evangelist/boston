@@ -21,7 +21,7 @@ description: >-
   University engineering. There is no central developer portal, no API key programme, no published
   API changelog, and the internal WEB APIs portal at webapi.bu.edu is NXDOMAIN.
 type: Index
-position: Consumer
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/boston.png
 url: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/apis.yml
