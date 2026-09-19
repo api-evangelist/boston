@@ -136,6 +136,13 @@ apis:
   - Shibboleth
   - InCommon
   - eduGAIN
+  - SSO
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - InCommon
+  - eduGAIN
   - Single Sign-On
   properties:
   - type: Metadata
