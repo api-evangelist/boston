@@ -1,0 +1,119 @@
+# x-method: derived
+# x-source-url: https://shib.bu.edu/idp/shibboleth
+# Authorship: written by API Evangelist from live, unauthenticated probes on 2026-08-30.
+# The structured `method: probed` below is the university pipeline's evidence class for
+# the same fact; `x-method` is the authorship class provenance.yml records.
+specification: API Evangelist Conformance
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: probed
+source: live probes of shib.bu.edu, open.bu.edu and www.bu.edu on 2026-08-30
+description: >-
+  Domain-standard conformance for Boston University, evaluated against the Kin Score `education`
+  regulatory regime standards list (scim, lti, oneroster, ed-fi, caliper, qti, oai-pmh, shibboleth,
+  saml, orcid, datacite, crossref). Every entry below was reached with an unauthenticated HTTP
+  request and is recorded with the exact location the evidence came from. Standards that were looked
+  for and NOT found are recorded as `not_found` rather than omitted, so the absence is legible.
+  Where a conforming endpoint is operated by a vendor on Boston University's behalf, `x-operator`
+  says so — the conformance is real, the engineering is not the institution's.
+conformance:
+  - standard: saml
+    name: SAML 2.0 Metadata
+    status: conformant
+    x-operator: institution
+    evidence:
+      url: https://shib.bu.edu/idp/shibboleth
+      status: 200
+      content_type: application/xml;charset=UTF-8
+      location: >-
+        Root element <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+        entityID="https://shib.bu.edu/idp/shibboleth"> containing an <IDPSSODescriptor
+        protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> with
+        SingleSignOnService bindings for HTTP-POST, HTTP-POST-SimpleSign and HTTP-Redirect.
+      local_copy: conformance/boston-shibboleth-idp-metadata.xml
+    notes: >-
+      Machine-readable SAML 2.0 entity metadata published by Boston University at its own host.
+      This is the clearest institution-operated, institution-authored machine-readable interface
+      Boston University publishes.
+  - standard: shibboleth
+    name: Shibboleth Identity Provider
+    status: conformant
+    x-operator: institution
+    evidence:
+      url: https://shib.bu.edu/idp/shibboleth
+      status: 200
+      location: >-
+        <Extensions><shibmd:Scope regexp="false">bu.edu</shibmd:Scope> and
+        <shibmd:Scope regexp="false">alum.bu.edu</shibmd:Scope> — the Shibboleth metadata
+        extension namespace urn:mace:shibboleth:metadata:1.0, plus IdP endpoints under
+        https://shib.bu.edu/idp/profile/SAML2/.
+    notes: >-
+      Shibboleth IdP asserting two scopes, bu.edu and alum.bu.edu. Registered by InCommon and
+      exported to eduGAIN; carries the REFEDS Research & Scholarship and SIRTFI entity categories.
+  - standard: oai-pmh
+    name: OAI-PMH 2.0
+    status: conformant
+    x-operator: tenant
+    evidence:
+      url: https://open.bu.edu/server/oai/request?verb=Identify
+      status: 200
+      content_type: text/xml;charset=UTF-8
+      location: >-
+        <Identify><repositoryName>OpenBU</repositoryName><protocolVersion>2.0</protocolVersion>
+        <earliestDatestamp>2005-08-12T20:32:45Z</earliestDatestamp>. ListMetadataFormats returns
+        eight prefixes: oai_dc, qdc, mods, marc, dim, etdms, didl, uketd_dc. ListSets returns
+        100 setSpec entries.
+    notes: >-
+      Conformant and live, but operated for Boston University by Atmire: open.bu.edu is a CNAME to
+      boston-prod.cname.atmire.com, the Identify response gives adminEmail atmirenv@gmail.com, and
+      the DSpace REST root advertises atmire-versions and atmirevaluepair endpoints. The repository
+      and its content are Boston University's; the OAI-PMH implementation is DSpace's, deployed by
+      the vendor. Recorded as conformant because the endpoint answers under BU's domain, and as
+      x-operator tenant so the engineering is not credited to the institution.
+    defects:
+      - description: >-
+          The oai-identifier description block returns an unresolved configuration placeholder:
+          <repositoryIdentifier>${oai.identifier.prefix}</repositoryIdentifier> and
+          <sampleIdentifier>oai:${oai.identifier.prefix}:2144/1234</sampleIdentifier>. Harvesters
+          reading the OAI identifier scheme from Identify get a literal template string. This is a
+          vendor deployment defect, not a Boston University one.
+        observed: '2026-08-30'
+  - standard: lti
+    name: IMS Learning Tools Interoperability
+    status: not_assessed
+    x-operator: tenant
+    evidence:
+      url: https://learn.bu.edu/learn/api/public/v1/system/version
+      status: 200
+      location: '{"learn":{"major":4000,"minor":21,"patch":0,"build":"rel.28+435d029"}}'
+    notes: >-
+      Boston University runs Blackboard Learn at learn.bu.edu (CNAME bu.blackboard.com). Blackboard
+      Learn is LTI-certified as a product, but that certification is Blackboard's and no
+      BU-specific LTI conformance declaration was found on a public surface. Not credited.
+  - standard: orcid
+    status: not_found
+    notes: >-
+      No ORCID identifiers appeared in a ListRecords sample from the OpenBU OAI-PMH endpoint
+      (qdc prefix), and no institutional ORCID integration statement was found on a public surface.
+  - standard: datacite
+    status: not_found
+    notes: >-
+      OpenBU mints Handle identifiers (hdl.handle.net/2144/...), not DataCite DOIs. Third-party
+      publisher DOIs appear inside record metadata but are not minted by Boston University.
+  - standard: crossref
+    status: not_found
+  - standard: scim
+    status: not_found
+  - standard: oneroster
+    status: not_found
+  - standard: ed-fi
+    status: not_found
+  - standard: caliper
+    status: not_found
+  - standard: qti
+    status: not_found
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

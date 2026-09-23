@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityID="https://shib.bu.edu/idp/shibboleth">
+  <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope regexp="false">bu.edu</shibmd:Scope>
+      <shibmd:Scope regexp="false">alum.bu.edu</shibmd:Scope>
+    </Extensions>
+    <KeyDescriptor>
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDFzCCAf+gAwIBAgIUe//QyolSjXGskJVe42L94YYJ7rswDQYJKoZIhvcNAQEF
+BQAwFjEUMBIGA1UEAxMLc2hpYi5idS5lZHUwHhcNMTEwNjIxMTYwMTQ5WhcNMzEw
+NjIxMTYwMTQ5WjAWMRQwEgYDVQQDEwtzaGliLmJ1LmVkdTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBAJMwoK7RFLBGDxf9l3FSw+KPpjXTDFc7gPrEqNFi
+9dSgn7MSLBUoXRDkDquuVUgXPwZsaoKdkS2U7SelLJlUgn+/n3BuTI3o4el7k+5p
+o14VxS3XLADqKlNcQ5O7EP5fhOpx6WIbEWl25I3urDD7Q73cEOskzW9i/Du+xxs2
+S+s8xLalhhHmsmNUS1646CisfLU7+07VnwfN9uQqWoPu16aBqqRklAHHvXmZXV03
+zKNJuwTQWkLZ2q1Zv8i+S4O/viZylTvqR1AgtEfNv6MXST6v/4g1Ymq0atckPCsc
+x2hmOQo4zuDua42lvKyYh1enVviu6okydt/0vL1jtnGA/EkCAwEAAaNdMFswOgYD
+VR0RBDMwMYILc2hpYi5idS5lZHWGImh0dHBzOi8vc2hpYi5idS5lZHUvaWRwL3No
+aWJib2xldGgwHQYDVR0OBBYEFAeldMor+2SpjIAE1QpLTkcGsHKcMA0GCSqGSIb3
+DQEBBQUAA4IBAQBOBkJybdEPPbufV795YrqaCAblz3nBZK4MhA6FrRc6hAuia9EB
+9qi0v/TgPFfJ1NpAk4DnRFgmhN4rE7yEFQNeF/6QKf6EknfOYO48J1yMe0gT0aoM
+edMjBzWMvyKaCOJbXcEYcgCKgL0lZ0r8Tiv94Zn9DEvYvox33742MAAImQQQ8FdK
+N5TIK/J7ALA8/xVFgo6XluioA6DYDq7CrJUPrc6LEDApexF5i7pyns7FV+d3EzlF
+TazioztaYa7yyphC1XgYol9So698mI3wfTQz9QEA6E9iuayzj+kJU7QAQ5pdA19w
+5cQaCFdIkECu3Ruv8jGs5oF5Zo37L1gK2j11
+                    </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+<!--
+    <ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://shib.bu.edu:8443/idp/profile/SAML2/SOAP/ArtifactResolution" index="2"/>
+-->
+    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://shib.bu.edu/idp/profile/SAML2/POST/SSO"/>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://shib.bu.edu/idp/profile/SAML2/POST-SimpleSign/SSO"/>
+    <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://shib.bu.edu/idp/profile/SAML2/Redirect/SSO"/>
+  </IDPSSODescriptor>
+<!--
+  <AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope regexp="false">bu.edu</shibmd:Scope>
+      <shibmd:Scope regexp="false">alum.bu.edu</shibmd:Scope>
+    </Extensions>
+    <KeyDescriptor>
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDFzCCAf+gAwIBAgIUe//QyolSjXGskJVe42L94YYJ7rswDQYJKoZIhvcNAQEF
+BQAwFjEUMBIGA1UEAxMLc2hpYi5idS5lZHUwHhcNMTEwNjIxMTYwMTQ5WhcNMzEw
+NjIxMTYwMTQ5WjAWMRQwEgYDVQQDEwtzaGliLmJ1LmVkdTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBAJMwoK7RFLBGDxf9l3FSw+KPpjXTDFc7gPrEqNFi
+9dSgn7MSLBUoXRDkDquuVUgXPwZsaoKdkS2U7SelLJlUgn+/n3BuTI3o4el7k+5p
+o14VxS3XLADqKlNcQ5O7EP5fhOpx6WIbEWl25I3urDD7Q73cEOskzW9i/Du+xxs2
+S+s8xLalhhHmsmNUS1646CisfLU7+07VnwfN9uQqWoPu16aBqqRklAHHvXmZXV03
+zKNJuwTQWkLZ2q1Zv8i+S4O/viZylTvqR1AgtEfNv6MXST6v/4g1Ymq0atckPCsc
+x2hmOQo4zuDua42lvKyYh1enVviu6okydt/0vL1jtnGA/EkCAwEAAaNdMFswOgYD
+VR0RBDMwMYILc2hpYi5idS5lZHWGImh0dHBzOi8vc2hpYi5idS5lZHUvaWRwL3No
+aWJib2xldGgwHQYDVR0OBBYEFAeldMor+2SpjIAE1QpLTkcGsHKcMA0GCSqGSIb3
+DQEBBQUAA4IBAQBOBkJybdEPPbufV795YrqaCAblz3nBZK4MhA6FrRc6hAuia9EB
+9qi0v/TgPFfJ1NpAk4DnRFgmhN4rE7yEFQNeF/6QKf6EknfOYO48J1yMe0gT0aoM
+edMjBzWMvyKaCOJbXcEYcgCKgL0lZ0r8Tiv94Zn9DEvYvox33742MAAImQQQ8FdK
+N5TIK/J7ALA8/xVFgo6XluioA6DYDq7CrJUPrc6LEDApexF5i7pyns7FV+d3EzlF
+TazioztaYa7yyphC1XgYol9So698mI3wfTQz9QEA6E9iuayzj+kJU7QAQ5pdA19w
+5cQaCFdIkECu3Ruv8jGs5oF5Zo37L1gK2j11
+                    </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <AttributeService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://shib.bu.edu:8443/idp/profile/SAML2/SOAP/AttributeQuery"/>
+    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+  </AttributeAuthorityDescriptor>
+-->
+  <ContactPerson contactType="technical">
+    <GivenName>BU IT Help Center</GivenName>
+    <EmailAddress>mailto:ithelp@bu.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="administrative">
+    <GivenName>BU IT Help Center</GivenName>
+    <EmailAddress>mailto:ithelp@bu.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson xmlns:ext="http://names.incommon.org/metadata/contactType" contactType="other" ext:extendedContactType="http://names.incommon.org/metadata/contactType/security">
+    <GivenName>BU Information Security</GivenName>
+    <EmailAddress>mailto:infosec@bu.edu</EmailAddress>
+  </ContactPerson>
+</EntityDescriptor>

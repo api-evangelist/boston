@@ -1,0 +1,38 @@
+{
+  "provider": "boston",
+  "sources": [
+    "_original/boston-wordpress-api-openapi.yml"
+  ],
+  "outputs": [
+    "boston-bu-access-control-api-openapi.yml",
+    "boston-bu-alert-api-openapi.yml",
+    "boston-bu-blocks-api-openapi.yml",
+    "boston-bu-cmb2-customizations-api-openapi.yml",
+    "boston-bu-navigation-api-openapi.yml",
+    "boston-bu-prepress-api-openapi.yml",
+    "boston-bu-site-manager-api-openapi.yml",
+    "boston-bu-slideshow-api-openapi.yml",
+    "boston-bu-tts-api-openapi.yml",
+    "boston-wordpress-core-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "boston-wordpress-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "boston-bu-access-control-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-alert-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-cmb2-customizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-navigation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-prepress-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-site-manager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-slideshow-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-bu-tts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boston-wordpress-core-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

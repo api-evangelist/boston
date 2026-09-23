@@ -1,0 +1,110 @@
+# x-method: derived
+# x-source-url: https://www.bu.edu/wp-json/
+# Authorship: written by API Evangelist from live, unauthenticated probes on 2026-08-30.
+# The structured `method: probed` below is the university pipeline's evidence class for
+# the same fact; `x-method` is the authorship class provenance.yml records.
+specification: API Evangelist Examples
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: probed
+source: verbatim anonymous responses captured 2026-08-30
+x-operator: institution
+description: >-
+  Real request/response pairs captured from Boston University-operated endpoints with no
+  credentials. Nothing here is illustrative. Draft/unpublished content observed on
+  /bu-blocks/v1/search is deliberately NOT reproduced; see authentication/boston-authentication.yml.
+examples:
+  - name: Discover the WordPress REST namespaces Boston University exposes
+    request:
+      method: GET
+      url: https://www.bu.edu/wp-json/
+    response:
+      status: 200
+      content_type: application/json; charset=UTF-8
+      size_bytes: 389199
+      excerpt:
+        name: Boston University
+        url: https://www.bu.edu
+        namespaces:
+          - oembed/1.0
+          - akismet/v1
+          - bu-alert/v1
+          - bu-cmb2-customizations/v1
+          - bu-navigation/v1
+          - bu-site-manager/v1
+          - bu-slideshow/v1
+          - bu-tts/v1
+          - yoast/v1
+          - gravityforms/v2
+          - bu-blocks/v1
+          - bu-prepress/v1
+          - bu-access-control/v1
+          - wp/v2
+          - wp-site-health/v1
+        route_count: 237
+  - name: List published pages
+    request:
+      method: GET
+      url: https://www.bu.edu/wp-json/wp/v2/pages?per_page=1&_fields=id,slug,link,type,status,date_gmt,title
+    response:
+      status: 200
+      body: |-
+        [
+          {
+            "id": 456783,
+            "date_gmt": "2026-07-30T05:13:00",
+            "slug": "summer-2026",
+            "status": "publish",
+            "type": "page",
+            "link": "https://www.bu.edu/bostonia/summer-2026/",
+            "title": { "rendered": "Summer 2026" }
+          }
+        ]
+  - name: A privileged Boston University route rejecting an anonymous caller
+    request:
+      method: GET
+      url: https://www.bu.edu/wp-json/bu-slideshow/v1/shows
+    response:
+      status: 401
+      body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  - name: Identify the OpenBU repository over OAI-PMH
+    x-operator: tenant
+    request:
+      method: GET
+      url: https://open.bu.edu/server/oai/request?verb=Identify
+    response:
+      status: 200
+      content_type: text/xml;charset=UTF-8
+      excerpt:
+        repositoryName: OpenBU
+        protocolVersion: '2.0'
+        earliestDatestamp: '2005-08-12T20:32:45Z'
+        adminEmail: atmirenv@gmail.com
+        granularity: YYYY-MM-DDThh:mm:ssZ
+      note: >-
+        adminEmail is the vendor's, not Boston University's — this is the evidence that OpenBU is
+        an Atmire-operated DSpace deployment.
+  - name: Read Boston University's SAML 2.0 identity provider metadata
+    x-operator: institution
+    request:
+      method: GET
+      url: https://shib.bu.edu/idp/shibboleth
+    response:
+      status: 200
+      content_type: application/xml;charset=UTF-8
+      size_bytes: 4996
+      excerpt:
+        entityID: https://shib.bu.edu/idp/shibboleth
+        scopes:
+          - bu.edu
+          - alum.bu.edu
+        protocolSupportEnumeration: urn:oasis:names:tc:SAML:2.0:protocol
+        singleSignOnService:
+          - urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+          - urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign
+          - urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,109 @@
+# x-method: derived
+# x-source-url: https://www.bu.edu/wp-json/
+# Authorship: written by API Evangelist from live, unauthenticated probes on 2026-08-30.
+# The structured `method: probed` below is the university pipeline's evidence class for
+# the same fact; `x-method` is the authorship class provenance.yml records.
+specification: API Evangelist Authentication
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: probed
+source: unauthenticated live probes of https://www.bu.edu/wp-json/ on 2026-08-30
+description: >-
+  How access is controlled on the surfaces Boston University itself operates. No credentials of any
+  kind were used; every observation below comes from an anonymous HTTP GET.
+surfaces:
+  - name: Boston University WordPress REST API
+    x-operator: institution
+    baseURL: https://www.bu.edu/wp-json
+    scheme: none-for-reads / cookie+nonce-for-privileged
+    description: >-
+      WordPress core authentication. Anonymous callers get the public read surface. Privileged
+      routes reject anonymous callers with HTTP 401 and the WordPress `rest_forbidden` code. Boston
+      University publishes no API keys, no OAuth flow, and no developer registration for this
+      interface — it is the CMS's own REST layer, incidentally public, not a productized API.
+    observed:
+      public:
+        - path: /
+          status: 200
+          note: Full route discovery document, 237 routes, 15 namespaces.
+        - path: /bu-alert/v1
+          status: 200
+          note: Namespace discovery document.
+        - path: /bu-navigation/v1
+          status: 200
+        - path: /bu-blocks/v1/collection
+          status: 200
+        - path: /bu-blocks/v1/search
+          status: 200
+        - path: /bu-prepress/v1/event
+          status: 200
+        - path: /wp/v2/pages
+          status: 200
+        - path: /wp/v2/types
+          status: 200
+        - path: /wp/v2/taxonomies
+          status: 200
+      gated:
+        - path: /bu-navigation/v1/parents
+          status: 401
+          code: rest_forbidden
+        - path: /bu-slideshow/v1/shows
+          status: 401
+          code: rest_forbidden
+        - path: /bu-access-control/v1/get-groups
+          status: 401
+          code: rest_forbidden
+    observations:
+      - severity: informational
+        description: >-
+          GET /bu-blocks/v1/search returns objects carrying "status":"draft" to an unauthenticated
+          caller — unpublished editorial content is reachable through this route without
+          credentials. Recorded as an access-clarity observation from a public probe. No draft
+          content is reproduced in this repository's examples.
+        observed: '2026-08-30'
+  - name: OpenBU repository (DSpace 7.6 / OAI-PMH)
+    x-operator: tenant
+    baseURL: https://open.bu.edu/server
+    scheme: none
+    description: >-
+      Both the OAI-PMH endpoint and the DSpace 7 REST API answer anonymous callers. Write and
+      submission workflows are behind DSpace authn at /server/api/authn. Operated for Boston
+      University by Atmire.
+    observed:
+      public:
+        - path: /oai/request?verb=Identify
+          status: 200
+        - path: /api
+          status: 200
+        - path: /api/core/communities
+          status: 200
+  - name: AI API Access (Azure OpenAI / Amazon Bedrock)
+    x-operator: tenant
+    scheme: request-form
+    description: >-
+      Boston University IS&T brokers LLM API keys to affiliated faculty, researchers, staff and
+      departments. Access requires financial-administrator approval and an AI API Key Request Form;
+      provisioning details and documentation are supplied only after approval. The underlying APIs
+      are Microsoft's and Amazon's, not Boston University's — BU operates the key-issuing process,
+      which is not itself a machine-readable interface.
+    observed:
+      documentation:
+        - url: https://www.bu.edu/tech/services/cccs/collaboration/conversational-ai/ai-api-access/
+          status: 200
+  - name: Boston University Shibboleth Identity Provider
+    x-operator: institution
+    baseURL: https://shib.bu.edu/idp
+    scheme: saml2-sso
+    description: >-
+      SAML 2.0 single sign-on for the bu.edu and alum.bu.edu scopes. The entity metadata is public
+      and anonymous; the SSO endpoints themselves are only meaningful inside a SAML flow.
+    observed:
+      public:
+        - path: /shibboleth
+          status: 200
+          note: SAML 2.0 EntityDescriptor.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

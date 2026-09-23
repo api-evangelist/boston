@@ -1,0 +1,80 @@
+# x-method: derived
+# x-source-url: https://www.bu.edu/wp-json/
+# Authorship: written by API Evangelist from live, unauthenticated probes on 2026-08-30.
+# The structured `method: probed` below is the university pipeline's evidence class for
+# the same fact; `x-method` is the authorship class provenance.yml records.
+specification: API Evangelist Lifecycle
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: probed
+source: version strings read from live endpoints on 2026-08-30
+description: >-
+  Versioning and change posture across the surfaces running under bu.edu. Boston University
+  publishes no API changelog, no deprecation policy and no version-support window for any of them —
+  the versions below are read off the running software, not off a published statement.
+surfaces:
+  - name: Boston University WordPress REST API
+    x-operator: institution
+    versioning: URI path segment per namespace
+    observed_versions:
+      - namespace: bu-alert/v1
+      - namespace: bu-access-control/v1
+      - namespace: bu-blocks/v1
+      - namespace: bu-cmb2-customizations/v1
+      - namespace: bu-navigation/v1
+      - namespace: bu-prepress/v1
+      - namespace: bu-site-manager/v1
+      - namespace: bu-slideshow/v1
+      - namespace: bu-tts/v1
+      - namespace: wp/v2
+    source: https://www.bu.edu/wp-json/
+    change_tracking: >-
+      No API changelog is published. The underlying plugins are open source at
+      https://github.com/bu-ist, so their commit history and releases are the only public record of
+      change to these namespaces — a repository history is not a deprecation policy, and is recorded
+      here as the substitute it is.
+    deprecation_policy: none published
+    support_window: none published
+  - name: OpenBU repository
+    x-operator: tenant
+    observed_versions:
+      - product: DSpace
+        version: '7.6'
+        source: 'https://open.bu.edu/server/api -> {"dspaceVersion":"DSpace 7.6"}'
+      - protocol: OAI-PMH
+        version: '2.0'
+        source: https://open.bu.edu/server/oai/request?verb=Identify
+    change_tracking: >-
+      Upgrade cadence is Atmire's, not Boston University's. No public statement of the deployment's
+      upgrade or deprecation posture was found.
+    deprecation_policy: none published
+  - name: Blackboard Learn
+    x-operator: tenant
+    observed_versions:
+      - product: Blackboard Learn
+        version: 4000.21.0
+        build: rel.28+435d029
+        source: https://learn.bu.edu/learn/api/public/v1/system/version
+    deprecation_policy: >-
+      Anthology/Blackboard publishes an API deprecation policy for Learn; it governs the vendor's
+      contract, not Boston University's deployment, and is not restated here.
+  - name: Boston University Shibboleth Identity Provider
+    x-operator: institution
+    versioning: SAML 2.0 protocol
+    change_tracking: >-
+      Metadata is refreshed through InCommon; the InCommon/eduGAIN aggregate is the change record.
+      The signing certificate carried in the entity metadata has notBefore 2011-06-21 and notAfter
+      2031-06-21.
+    source: https://shib.bu.edu/idp/shibboleth
+  - name: webapi.bu.edu
+    x-operator: institution
+    status: dead
+    note: >-
+      Referenced by Boston University as an internal "WEB APIs" portal. NXDOMAIN as of 2026-08-30 —
+      no A record, no CNAME. Recorded so that a future pass does not rediscover it as a lead. Not
+      emitted as a pointer.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

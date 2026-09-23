@@ -1,0 +1,114 @@
+openapi: 3.2.0
+info:
+  title: Boston University WordPress REST Bu Prepress API
+  version: '2026-08-30'
+  summary: Boston University IS&T-authored REST namespaces on www.bu.edu, plus the core WordPress read routes verified live.
+  description: Boston University operates its own WordPress platform at www.bu.edu and exposes a public WordPress REST discovery document at https://www.bu.edu/wp-json/.
+  contact:
+    name: Boston University Information Services & Technology
+    url: https://www.bu.edu/tech/
+  license:
+    name: Not stated by the provider
+    identifier: NOASSERTION
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: derived
+    source: https://www.bu.edu/wp-json/ (live WordPress REST discovery document, HTTP 200, 389,199 bytes)
+servers:
+- url: https://www.bu.edu/wp-json
+  description: Boston University WordPress REST API
+tags:
+- name: bu-prepress
+  description: Boston University-authored namespace `bu-prepress/v1`.
+paths:
+  /bu-prepress/v1:
+    get:
+      operationId: get-bu-prepress-v1
+      summary: GET /bu-prepress/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document and are therefore left unspecified rather than invented.
+      tags:
+      - bu-prepress
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-prepress/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-prepress/v1/event:
+    get:
+      operationId: get-bu-prepress-v1-event
+      summary: GET /bu-prepress/v1/event
+      description: Route and arguments transcribed from the live WordPress REST discovery document at https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document and are therefore left unspecified rather than invented.
+      tags:
+      - bu-prepress
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+components:
+  schemas:
+    RestError:
+      type: object
+      description: Standard WordPress REST error envelope, captured live from https://www.bu.edu/wp-json/bu-slideshow/v1/shows on 2026-08-30.
+      properties:
+        code:
+          type: string
+          examples:
+          - rest_forbidden
+          - rest_no_route
+        message:
+          type: string
+          examples:
+          - Sorry, you are not allowed to do that.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              examples:
+              - 401
+              - 404
+      required:
+      - code
+      - message
+      - data
+    UnspecifiedPayload:
+      description: The provider publishes no response schema for this route. Left unspecified rather than invented.

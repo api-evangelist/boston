@@ -3,20 +3,140 @@ name: Boston University
 description: Boston University public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 reviews:
+  - date: '2026-08-30'
+    rating: 3
+    pipeline: university
+    summary: >-
+      Re-profiled under the university pipeline, whose first question is who OPERATES each surface
+      rather than whether a specification exists. Two corrections and one real find. CORRECTION ONE:
+      OpenBU, previously catalogued as Boston University's own OAI-PMH surface, is an Atmire-operated
+      DSpace 7.6 deployment — open.bu.edu is a CNAME to boston-prod.cname.atmire.com, the Identify
+      response returns adminEmail atmirenv@gmail.com, and the DSpace REST root advertises
+      atmire-versions and atmirevaluepair endpoints. The repository, its content and its 2144 Handle
+      prefix are Boston University's; the engineering is not. Re-labelled x-operator tenant, not
+      deleted — a tenant relationship is a real institutional fact. CORRECTION TWO: two further
+      vendor platforms running under bu.edu hostnames were previously uncatalogued and are now
+      recorded as tenant relationships rather than left to be rediscovered and misattributed — Ex
+      Libris Primo library discovery (bu.primo.exlibrisgroup.com, vid 01BOSU_INST:BULS) and
+      Blackboard Learn (learn.bu.edu CNAMEs to bu.blackboard.com; its public REST API returns Learn
+      4000.21.0 unauthenticated and 401 on data routes). THE FIND: Boston University publishes two
+      machine-readable interfaces it genuinely operates and authors. The WordPress REST API on
+      www.bu.edu advertises 237 routes across 15 namespaces, and nine of those namespaces — 31
+      routes — are BU IS&T's own open-source plugins (bu-alert, bu-access-control, bu-blocks,
+      bu-cmb2-customizations, bu-navigation, bu-prepress, bu-site-manager, bu-slideshow, bu-tts),
+      published at github.com/bu-ist and documented at developer.bu.edu. And shib.bu.edu serves
+      public SAML 2.0 Shibboleth IdP metadata, registered by InCommon, exported to eduGAIN, SWAMID
+      and the UK Access Management Federation, asserting REFEDS Research & Scholarship and SIRTFI.
+      That identity-federation surface had never been catalogued and is the cleanest institution-
+      authored contract in this profile. Surfaces hunted and NOT found: course catalog / registrar
+      API, open data portal, dining, transit, research-computing API, llms.txt, apis.json,
+      /.well-known/security.txt, and any developer portal or API key programme. webapi.bu.edu
+      remains NXDOMAIN. bus.bu.edu is a student-built BostonHacks shuttle tracker on a delegated
+      bu.edu subdomain served from GitHub Pages, with no API of its own. profiles.bu.edu is a
+      Profiles RNS deployment on Boston University's own network, but four candidate API paths all
+      returned 404. One OpenAPI was DERIVED from the live WordPress discovery document and marked as
+      such; no specification was invented and no vendor specification was saved under this slug.
+    endpoints:
+      - url: https://www.bu.edu/wp-json/
+        status: 200
+        note: >-
+          WordPress REST discovery document, 389,199 bytes, 237 routes, 15 namespaces of which nine
+          are BU-authored.
+      - url: https://www.bu.edu/wp-json/wp/v2/pages?per_page=1
+        status: 200
+        note: Returns published page objects to an anonymous caller.
+      - url: https://www.bu.edu/wp-json/wp/v2/taxonomies
+        status: 200
+        note: 21 taxonomies including BU editorial taxonomies for Bostonia, BU Today and The Brink.
+      - url: https://www.bu.edu/wp-json/bu-blocks/v1/search
+        status: 200
+        note: >-
+          Public BU-authored route. Returns objects with status "draft" to unauthenticated callers;
+          recorded as an access-clarity observation in authentication/boston-authentication.yml.
+          No draft content is reproduced in this repository.
+      - url: https://www.bu.edu/wp-json/bu-slideshow/v1/shows
+        status: 401
+        note: 'rest_forbidden — privileged BU-authored route, correctly gated.'
+      - url: https://www.bu.edu/wp-json/bu-access-control/v1/get-groups
+        status: 401
+        note: rest_forbidden.
+      - url: https://shib.bu.edu/idp/shibboleth
+        status: 200
+        note: >-
+          SAML 2.0 EntityDescriptor, entityID https://shib.bu.edu/idp/shibboleth, scopes bu.edu and
+          alum.bu.edu. Institution-operated.
+      - url: https://met.refeds.org/met/entity/https%3A%2F%2Fshib.bu.edu%2Fidp%2Fshibboleth/
+        status: 200
+        note: >-
+          Federation registration confirmed — registration authority https://incommon.org, exported
+          to eduGAIN, SWAMID and the UK Access Management Federation; REFEDS R&S and SIRTFI.
+      - url: https://open.bu.edu/server/oai/request?verb=Identify
+        status: 200
+        note: >-
+          Live OAI-PMH 2.0. repositoryName OpenBU. adminEmail atmirenv@gmail.com — vendor-operated.
+          repositoryIdentifier is an unresolved placeholder, ${oai.identifier.prefix}.
+      - url: https://open.bu.edu/server/api
+        status: 200
+        note: DSpace 7.6 REST root, advertising atmire-versions and atmirevaluepair endpoints.
+      - url: https://learn.bu.edu/learn/api/public/v1/system/version
+        status: 200
+        note: 'Blackboard Learn 4000.21.0 build rel.28+435d029. Tenant surface.'
+      - url: https://learn.bu.edu/learn/api/public/v1/courses
+        status: 401
+        note: API request is not authenticated.
+      - url: https://bu.primo.exlibrisgroup.com/discovery/search?vid=01BOSU_INST:BULS
+        status: 200
+        note: Ex Libris Primo, Boston University tenant view. Vendor contract.
+      - url: https://developer.bu.edu/
+        status: 200
+        note: >-
+          BU Web Developer Network — institution-operated, but documents BU's open-source WordPress
+          plugins rather than an API. Not a developer portal in the API sense.
+      - url: https://profiles.bu.edu/search/
+        status: 200
+        note: Profiles RNS on BU's own network (128.197.228.42). No reachable API.
+      - url: https://profiles.bu.edu/ProfilesRNSAPI
+        status: 404
+        note: One of four candidate Profiles RNS API paths probed; all 404.
+      - url: https://bus.bu.edu/
+        status: 200
+        note: >-
+          "WhenIsTheBus" — student-built (BostonHacks) shuttle tracker on a bu.edu subdomain
+          delegated to GitHub Pages. No API of its own; not credited to the institution.
+      - url: https://www.bu.edu/llms.txt
+        status: 404
+        note: Real 404 with an HTML body, not a soft 404.
+      - url: https://www.bu.edu/apis.json
+        status: 404
+      - url: https://www.bu.edu/.well-known/security.txt
+        status: 404
+      - url: https://webapi.bu.edu/
+        status: 0
+        note: NXDOMAIN. No A record, no CNAME. Confirmed dead, no pointer emitted.
+      - url: https://www.linkedin.com/school/boston-university/
+        status: 999
+        note: LinkedIn bot challenge — live, not dead. Pointer retained.
   - date: '2026-06-03'
     rating: 2
     summary: >-
-      Boston University's public, machine-readable API footprint is limited. The
-      one clearly public, documented-by-protocol interface verified live is the
-      OpenBU DSpace OAI-PMH endpoint, which returned a valid Identify response
-      (repositoryName "OpenBU"). An internal "WEB APIs" portal at webapi.bu.edu
-      is referenced but does not resolve publicly (NXDOMAIN / connection refused
-      from off-network), so it is treated as gated and no endpoints were
-      invented. AI API access via Azure OpenAI / Amazon Bedrock is gated behind a
-      request form. The bu-ist GitHub org exists but hosts WordPress tooling, not
-      open API specs. No fabricated endpoints; all entries reflect probed status.
+      Boston University's public, machine-readable API footprint is limited. The one clearly public,
+      documented-by-protocol interface verified live is the OpenBU DSpace OAI-PMH endpoint, which
+      returned a valid Identify response (repositoryName "OpenBU"). An internal "WEB APIs" portal at
+      webapi.bu.edu is referenced but does not resolve publicly (NXDOMAIN / connection refused from
+      off-network), so it is treated as gated and no endpoints were invented. AI API access via Azure
+      OpenAI / Amazon Bedrock is gated behind a request form. The bu-ist GitHub org exists but hosts
+      WordPress tooling, not open API specs. No fabricated endpoints; all entries reflect probed
+      status.
+    superseded_by: '2026-08-30'
+    superseded_note: >-
+      This review attributed the OpenBU OAI-PMH endpoint to Boston University. The 2026-08-30 pass
+      established that it is Atmire-operated and re-labelled it x-operator tenant. It also missed
+      the two surfaces Boston University does operate and author — the WordPress REST API and the
+      Shibboleth identity provider — and read the bu-ist GitHub org as "WordPress tooling, not open
+      API specs" when those plugins are in fact the implementation behind nine live REST namespaces
+      on www.bu.edu.
     endpoints:
       - url: https://open.bu.edu/server/oai/request?verb=Identify
         status: 200
@@ -39,4 +159,3 @@ reviews:
       - url: https://www.linkedin.com/school/boston-university/
         status: 200
         note: Official LinkedIn school page.
----

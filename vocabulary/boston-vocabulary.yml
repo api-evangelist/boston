@@ -1,0 +1,92 @@
+specification: API Evangelist Vocabulary
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: derived
+source: >-
+  terms transcribed from live responses at https://www.bu.edu/wp-json/,
+  https://open.bu.edu/server/oai/request and https://shib.bu.edu/idp/shibboleth on 2026-08-30
+description: >-
+  The vocabulary Boston University's own surfaces actually use. Every term below appears verbatim in
+  a response captured during this pass; nothing is proposed or normalized into a term the
+  institution does not use.
+vocabularies:
+  - name: Boston University WordPress REST namespaces
+    x-operator: institution
+    source: https://www.bu.edu/wp-json/
+    terms:
+      - term: bu-alert
+        definition: Namespace for Boston University's emergency alert banner control (start/stop).
+      - term: bu-access-control
+        definition: Namespace for site access groups (get-groups, get-group-usage, update-group, delete-group).
+      - term: bu-blocks
+        definition: Namespace for Boston University's Gutenberg block library (collection, customhtml, search, yarpprelated).
+      - term: bu-cmb2-customizations
+        definition: Namespace exposing the BU post chooser used by the editorial interface.
+      - term: bu-navigation
+        definition: Namespace for BU's hierarchical page navigation plugin (markup, parents).
+      - term: bu-prepress
+        definition: Namespace for pre-publication editorial events.
+      - term: bu-site-manager
+        definition: Namespace for site snapshot management (snapshots/list, snapshots/pull, snapshots/push).
+      - term: bu-slideshow
+        definition: Namespace for BU's slideshow plugin (markup, shows).
+      - term: bu-tts
+        definition: Namespace for text-to-speech rendering of BU articles (bu-article/{id}, status/{id}).
+  - name: Boston University editorial taxonomies
+    x-operator: institution
+    source: https://www.bu.edu/wp-json/wp/v2/taxonomies
+    note: >-
+      Publication-specific taxonomies registered on BU's own WordPress platform, naming the
+      institution's editorial properties — Bostonia, BU Today and The Brink.
+    terms:
+      - term: bu-publication
+      - term: bu_author_type
+      - term: bu_collection_type
+      - term: bu_editorial_tag
+      - term: bu_edition
+      - term: bostonia-article-category
+      - term: bostonia-topic
+      - term: bostonia-closeup-category
+      - term: butoday-article-category
+      - term: butoday-topic
+      - term: butoday-closeup-category
+      - term: brink-article-category
+      - term: brink-topic
+      - term: brink-closeup-category
+      - term: classnote_category
+      - term: classnote_year
+      - term: classnote_school
+      - term: media_type
+  - name: OpenBU OAI-PMH metadata formats
+    x-operator: tenant
+    source: https://open.bu.edu/server/oai/request?verb=ListMetadataFormats
+    terms:
+      - term: oai_dc
+        definition: Dublin Core, http://www.openarchives.org/OAI/2.0/oai_dc/
+      - term: qdc
+        definition: Qualified Dublin Core, http://purl.org/dc/terms/
+      - term: mods
+        definition: MODS 3.1, http://www.loc.gov/mods/v3
+      - term: marc
+        definition: MARCXML slim, http://www.loc.gov/MARC21/slim
+      - term: dim
+        definition: DSpace Intermediate Metadata, http://www.dspace.org/xmlns/dspace/dim
+      - term: etdms
+        definition: NDLTD ETD-MS 1.0, http://www.ndltd.org/standards/metadata/etdms/1.0/
+      - term: didl
+        definition: MPEG-21 DIDL, urn:mpeg:mpeg21:2002:02-DIDL-NS
+      - term: uketd_dc
+        definition: UKETD_DC (EThOS), http://naca.central.cranfield.ac.uk/ethos-oai/2.0/
+  - name: Boston University identity scopes
+    x-operator: institution
+    source: https://shib.bu.edu/idp/shibboleth
+    terms:
+      - term: bu.edu
+        definition: Primary Shibboleth scope for Boston University affiliates.
+      - term: alum.bu.edu
+        definition: Shibboleth scope for Boston University alumni identities.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

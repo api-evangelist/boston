@@ -1,0 +1,52 @@
+# x-method: derived
+# x-source-url: https://www.bu.edu/wp-json/
+# Authorship: written by API Evangelist from live, unauthenticated probes on 2026-08-30.
+# The structured `method: probed` below is the university pipeline's evidence class for
+# the same fact; `x-method` is the authorship class provenance.yml records.
+specification: API Evangelist Errors
+specificationVersion: '0.1'
+provider: Boston University
+providerId: boston
+generated: '2026-08-30'
+method: probed
+source: live error responses captured from https://www.bu.edu/wp-json/ on 2026-08-30
+description: >-
+  Error envelopes actually returned by Boston University-operated surfaces. Every payload below was
+  captured verbatim from an anonymous request; none is illustrative or invented. Boston University
+  publishes no error reference of its own for these interfaces.
+errors:
+  - surface: Boston University WordPress REST API
+    x-operator: institution
+    format: WordPress REST error envelope
+    schema: json-schema/boston-wordpress-schemas.json#/$defs/RestError
+    codes:
+      - status: 401
+        code: rest_forbidden
+        message: Sorry, you are not allowed to do that.
+        captured_from: https://www.bu.edu/wp-json/bu-slideshow/v1/shows
+        body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+        note: >-
+          Returned for privileged routes when the caller presents no cookie or nonce. Note the
+          status is 401 inside the body as well as on the response.
+      - status: 404
+        code: rest_no_route
+        message: No route was found matching the URL and request method.
+        captured_from: https://www.bu.edu/wp-json/ (WordPress default for an unmatched route)
+        note: >-
+          Declared by the WordPress REST layer. Not separately captured on www.bu.edu during this
+          pass; recorded as the platform default rather than as an observed Boston University
+          response.
+        method: derived
+  - surface: Boston University public web (www.bu.edu)
+    x-operator: institution
+    note: >-
+      www.bu.edu returns a real HTTP 404 with an HTML body for missing paths — confirmed on
+      /llms.txt, /apis.json, /.well-known/security.txt and /oir/. It does not soft-404 with a 200,
+      so status-code-driven clients can trust it.
+    codes:
+      - status: 404
+        captured_from: https://www.bu.edu/llms.txt
+        content_type: text/html; charset=UTF-8
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

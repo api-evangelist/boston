@@ -1,0 +1,1902 @@
+openapi: 3.1.0
+info:
+  title: Boston University WordPress REST API
+  version: '2026-08-30'
+  summary: Boston University IS&T-authored REST namespaces on www.bu.edu, plus the core WordPress read
+    routes verified live.
+  description: 'Boston University operates its own WordPress platform at www.bu.edu and exposes a public
+    WordPress REST discovery document at https://www.bu.edu/wp-json/. Nine of the fifteen namespaces it
+    advertises are Boston University''s own engineering — bu-alert, bu-access-control, bu-blocks, bu-cmb2-customizations,
+    bu-navigation, bu-prepress, bu-site-manager, bu-slideshow and bu-tts — implemented by the open-source
+    WordPress plugins BU IS&T publishes at https://github.com/bu-ist and documents at https://developer.bu.edu/.
+    That makes this the one substantial machine-readable interface Boston University itself operates and
+    authors, as opposed to the vendor-operated repository, library and LMS platforms running under its
+    name.
+
+
+    This document was DERIVED by transcribing the live discovery document; it was not published by Boston
+    University. Paths, methods and query arguments come from that document. Response schemas are NOT described
+    there, so they are deliberately left unspecified rather than invented. Routes marked in their 200
+    description as "not observed" returned HTTP 401 `rest_forbidden` to an unauthenticated caller on 2026-08-30.'
+  contact:
+    name: Boston University Information Services & Technology
+    url: https://www.bu.edu/tech/
+  license:
+    name: Not stated by the provider
+    identifier: NOASSERTION
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: derived
+    source: https://www.bu.edu/wp-json/ (live WordPress REST discovery document, HTTP 200, 389,199 bytes)
+servers:
+- url: https://www.bu.edu/wp-json
+  description: Boston University WordPress REST API
+tags:
+- name: bu-access-control
+  description: Boston University-authored namespace `bu-access-control/v1`.
+- name: bu-alert
+  description: Boston University-authored namespace `bu-alert/v1`.
+- name: bu-blocks
+  description: Boston University-authored namespace `bu-blocks/v1`.
+- name: bu-cmb2-customizations
+  description: Boston University-authored namespace `bu-cmb2-customizations/v1`.
+- name: bu-navigation
+  description: Boston University-authored namespace `bu-navigation/v1`.
+- name: bu-prepress
+  description: Boston University-authored namespace `bu-prepress/v1`.
+- name: bu-site-manager
+  description: Boston University-authored namespace `bu-site-manager/v1`.
+- name: bu-slideshow
+  description: Boston University-authored namespace `bu-slideshow/v1`.
+- name: bu-tts
+  description: Boston University-authored namespace `bu-tts/v1`.
+- name: wordpress-core
+  description: Core WordPress read routes verified live on www.bu.edu.
+paths:
+  /bu-access-control/v1:
+    get:
+      operationId: get-bu-access-control-v1
+      summary: GET /bu-access-control/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-access-control
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-access-control/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-access-control/v1/delete-group:
+    post:
+      operationId: post-bu-access-control-v1-delete-group
+      summary: POST /bu-access-control/v1/delete-group
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-access-control
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-access-control/v1/get-group-usage:
+    get:
+      operationId: get-bu-access-control-v1-get-group-usage
+      summary: GET /bu-access-control/v1/get-group-usage
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-access-control
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-access-control/v1/get-groups:
+    get:
+      operationId: get-bu-access-control-v1-get-groups
+      summary: GET /bu-access-control/v1/get-groups
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-access-control
+      responses:
+        '200':
+          description: 'Successful response. Not observed: this route returned 401 to an unauthenticated
+            caller on 2026-08-30.'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-access-control/v1/update-group:
+    post:
+      operationId: post-bu-access-control-v1-update-group
+      summary: POST /bu-access-control/v1/update-group
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-access-control
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-alert/v1:
+    get:
+      operationId: get-bu-alert-v1
+      summary: GET /bu-alert/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-alert
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-alert/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-alert/v1/start:
+    post:
+      operationId: post-bu-alert-v1-start
+      summary: POST /bu-alert/v1/start
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-alert
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-alert/v1/stop:
+    post:
+      operationId: post-bu-alert-v1-stop
+      summary: POST /bu-alert/v1/stop
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-alert
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    get:
+      operationId: get-bu-alert-v1-stop
+      summary: GET /bu-alert/v1/stop
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-alert
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-blocks/v1:
+    get:
+      operationId: get-bu-blocks-v1
+      summary: GET /bu-blocks/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-blocks/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-blocks/v1/collection:
+    get:
+      operationId: get-bu-blocks-v1-collection
+      summary: GET /bu-blocks/v1/collection
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-blocks/v1/customhtml:
+    get:
+      operationId: get-bu-blocks-v1-customhtml
+      summary: GET /bu-blocks/v1/customhtml
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    post:
+      operationId: post-bu-blocks-v1-customhtml
+      summary: POST /bu-blocks/v1/customhtml
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    put:
+      operationId: put-bu-blocks-v1-customhtml
+      summary: PUT /bu-blocks/v1/customhtml
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    patch:
+      operationId: patch-bu-blocks-v1-customhtml
+      summary: PATCH /bu-blocks/v1/customhtml
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    delete:
+      operationId: delete-bu-blocks-v1-customhtml
+      summary: DELETE /bu-blocks/v1/customhtml
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-blocks/v1/search:
+    get:
+      operationId: get-bu-blocks-v1-search
+      summary: GET /bu-blocks/v1/search
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-blocks/v1/yarpprelated:
+    get:
+      operationId: get-bu-blocks-v1-yarpprelated
+      summary: GET /bu-blocks/v1/yarpprelated
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-blocks
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-cmb2-customizations/v1:
+    get:
+      operationId: get-bu-cmb2-customizations-v1
+      summary: GET /bu-cmb2-customizations/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-cmb2-customizations
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-cmb2-customizations/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-cmb2-customizations/v1/bu-post-chooser:
+    get:
+      operationId: get-bu-cmb2-customizations-v1-bu-post-chooser
+      summary: GET /bu-cmb2-customizations/v1/bu-post-chooser
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-cmb2-customizations
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-navigation/v1:
+    get:
+      operationId: get-bu-navigation-v1
+      summary: GET /bu-navigation/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-navigation
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-navigation/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-navigation/v1/markup:
+    get:
+      operationId: get-bu-navigation-v1-markup
+      summary: GET /bu-navigation/v1/markup
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-navigation
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-navigation/v1/parents:
+    get:
+      operationId: get-bu-navigation-v1-parents
+      summary: GET /bu-navigation/v1/parents
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-navigation
+      responses:
+        '200':
+          description: 'Successful response. Not observed: this route returned 401 to an unauthenticated
+            caller on 2026-08-30.'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-prepress/v1:
+    get:
+      operationId: get-bu-prepress-v1
+      summary: GET /bu-prepress/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-prepress
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-prepress/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-prepress/v1/event:
+    get:
+      operationId: get-bu-prepress-v1-event
+      summary: GET /bu-prepress/v1/event
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-prepress
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-site-manager/v1:
+    get:
+      operationId: get-bu-site-manager-v1
+      summary: GET /bu-site-manager/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-site-manager
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-site-manager/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-site-manager/v1/snapshots/list:
+    get:
+      operationId: get-bu-site-manager-v1-snapshots-list
+      summary: GET /bu-site-manager/v1/snapshots/list
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-site-manager
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-site-manager/v1/snapshots/pull:
+    post:
+      operationId: post-bu-site-manager-v1-snapshots-pull
+      summary: POST /bu-site-manager/v1/snapshots/pull
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-site-manager
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: snapshot_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: destination_url
+        in: query
+        required: true
+        schema:
+          type: string
+  /bu-site-manager/v1/snapshots/push:
+    post:
+      operationId: post-bu-site-manager-v1-snapshots-push
+      summary: POST /bu-site-manager/v1/snapshots/push
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-site-manager
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: url
+        in: query
+        required: true
+        schema:
+          type: string
+  /bu-slideshow/v1:
+    get:
+      operationId: get-bu-slideshow-v1
+      summary: GET /bu-slideshow/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-slideshow
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-slideshow/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-slideshow/v1/markup:
+    get:
+      operationId: get-bu-slideshow-v1-markup
+      summary: GET /bu-slideshow/v1/markup
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-slideshow
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-slideshow/v1/shows:
+    get:
+      operationId: get-bu-slideshow-v1-shows
+      summary: GET /bu-slideshow/v1/shows
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-slideshow
+      responses:
+        '200':
+          description: 'Successful response. Not observed: this route returned 401 to an unauthenticated
+            caller on 2026-08-30.'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-tts/v1:
+    get:
+      operationId: get-bu-tts-v1
+      summary: GET /bu-tts/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-tts
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-tts/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-tts/v1/bu-article/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^\d+$
+    get:
+      operationId: get-bu-tts-v1-bu-article-id
+      summary: GET /bu-tts/v1/bu-article/{id}
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-tts
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-tts/v1/bu-article/{id}/status:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^\d+$
+    get:
+      operationId: get-bu-tts-v1-bu-article-id-status
+      summary: GET /bu-tts/v1/bu-article/{id}/status
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-tts
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /bu-tts/v1/status/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^\d+$
+    get:
+      operationId: get-bu-tts-v1-status-id
+      summary: GET /bu-tts/v1/status/{id}
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - bu-tts
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /wp/v2/pages:
+    get:
+      operationId: get-wp-v2-pages
+      summary: GET /wp/v2/pages
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts published after a given ISO8601 compliant date.
+      - name: modified_after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to posts assigned to specific authors.
+      - name: author_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Ensure result set excludes posts assigned to specific authors.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts published before a given ISO8601 compliant date.
+      - name: modified_before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to specific IDs.
+      - name: menu_order
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit result set to posts with a specific menu_order value.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          - menu_order
+          default: date
+        description: Sort collection by post attribute.
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to items with particular parent IDs.
+      - name: parent_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to all items except those of a particular parent ID.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to posts with one or more specific slugs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          default: publish
+        description: Limit result set to posts assigned one or more statuses.
+      - name: tax_relation
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+        description: Limit result set based on relationship between multiple taxonomies.
+      - name: bu-publication
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items with specific terms assigned in the bu-publication taxonomy.
+      - name: bu-publication_exclude
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items except those with specific terms assigned in the bu-publication
+          taxonomy.
+    post:
+      operationId: post-wp-v2-pages
+      summary: POST /wp/v2/pages
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The date the post was published, in the site's timezone.
+      - name: date_gmt
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The date the post was published, as GMT.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An alphanumeric identifier for the post unique to its type.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+        description: A named status for the post.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A password to protect access to the content and excerpt.
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID for the parent of the post.
+      - name: title
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The title for the post.
+      - name: content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The content for the post.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID for the author of the post.
+      - name: excerpt
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The excerpt for the post.
+      - name: featured_media
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID of the featured media for the post.
+      - name: comment_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+        description: Whether or not comments are open on the post.
+      - name: ping_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+        description: Whether or not the post can be pinged.
+      - name: menu_order
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The order of the post in relation to other posts.
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Meta fields.
+      - name: template
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The theme file to use to display the post.
+      - name: bu-publication
+        in: query
+        required: false
+        schema:
+          type: array
+        description: The terms assigned to the post in the bu-publication taxonomy.
+  /wp/v2/posts:
+    get:
+      operationId: get-wp-v2-posts
+      summary: GET /wp/v2/posts
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts published after a given ISO8601 compliant date.
+      - name: modified_after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to posts assigned to specific authors.
+      - name: author_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Ensure result set excludes posts assigned to specific authors.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts published before a given ISO8601 compliant date.
+      - name: modified_before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        description: Sort collection by post attribute.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Limit result set to posts with one or more specific slugs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          default: publish
+        description: Limit result set to posts assigned one or more statuses.
+      - name: tax_relation
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+        description: Limit result set based on relationship between multiple taxonomies.
+      - name: categories
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items with specific terms assigned in the categories taxonomy.
+      - name: categories_exclude
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items except those with specific terms assigned in the categories
+          taxonomy.
+      - name: tags
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items with specific terms assigned in the tags taxonomy.
+      - name: tags_exclude
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit result set to items except those with specific terms assigned in the tags taxonomy.
+      - name: sticky
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Limit result set to items that are sticky.
+    post:
+      operationId: post-wp-v2-posts
+      summary: POST /wp/v2/posts
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The date the post was published, in the site's timezone.
+      - name: date_gmt
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The date the post was published, as GMT.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An alphanumeric identifier for the post unique to its type.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+        description: A named status for the post.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A password to protect access to the content and excerpt.
+      - name: title
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The title for the post.
+      - name: content
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The content for the post.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID for the author of the post.
+      - name: excerpt
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The excerpt for the post.
+      - name: featured_media
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID of the featured media for the post.
+      - name: comment_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+        description: Whether or not comments are open on the post.
+      - name: ping_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+        description: Whether or not the post can be pinged.
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - standard
+          - aside
+          - chat
+          - gallery
+          - link
+          - image
+          - quote
+          - status
+          - video
+          - audio
+        description: The format for the post.
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Meta fields.
+      - name: sticky
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Whether or not the post should be treated as sticky.
+      - name: template
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The theme file to use to display the post.
+      - name: categories
+        in: query
+        required: false
+        schema:
+          type: array
+        description: The terms assigned to the post in the category taxonomy.
+      - name: tags
+        in: query
+        required: false
+        schema:
+          type: array
+        description: The terms assigned to the post in the post_tag taxonomy.
+  /wp/v2/taxonomies:
+    get:
+      operationId: get-wp-v2-taxonomies
+      summary: GET /wp/v2/taxonomies
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to taxonomies associated with a specific post type.
+  /wp/v2/types:
+    get:
+      operationId: get-wp-v2-types
+      summary: GET /wp/v2/types
+      description: Route and arguments transcribed from the live WordPress REST discovery document at
+        https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document
+        and are therefore left unspecified rather than invented.
+      tags:
+      - wordpress-core
+      responses:
+        '200':
+          description: Successful response (verified live 2026-08-30).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnspecifiedPayload'
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+components:
+  schemas:
+    RestError:
+      type: object
+      description: Standard WordPress REST error envelope, captured live from https://www.bu.edu/wp-json/bu-slideshow/v1/shows
+        on 2026-08-30.
+      properties:
+        code:
+          type: string
+          examples:
+          - rest_forbidden
+          - rest_no_route
+        message:
+          type: string
+          examples:
+          - Sorry, you are not allowed to do that.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              examples:
+              - 401
+              - 404
+      required:
+      - code
+      - message
+      - data
+    UnspecifiedPayload:
+      description: The provider publishes no response schema for this route. Left unspecified rather than
+        invented.

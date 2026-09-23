@@ -1,0 +1,108 @@
+openapi: 3.2.0
+info:
+  title: Boston University WordPress REST Bu Cmb2 Customizations API
+  version: '2026-08-30'
+  summary: Boston University IS&T-authored REST namespaces on www.bu.edu, plus the core WordPress read routes verified live.
+  description: Boston University operates its own WordPress platform at www.bu.edu and exposes a public WordPress REST discovery document at https://www.bu.edu/wp-json/.
+  contact:
+    name: Boston University Information Services & Technology
+    url: https://www.bu.edu/tech/
+  license:
+    name: Not stated by the provider
+    identifier: NOASSERTION
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: derived
+    source: https://www.bu.edu/wp-json/ (live WordPress REST discovery document, HTTP 200, 389,199 bytes)
+servers:
+- url: https://www.bu.edu/wp-json
+  description: Boston University WordPress REST API
+tags:
+- name: bu-cmb2-customizations
+  description: Boston University-authored namespace `bu-cmb2-customizations/v1`.
+paths:
+  /bu-cmb2-customizations/v1:
+    get:
+      operationId: get-bu-cmb2-customizations-v1
+      summary: GET /bu-cmb2-customizations/v1
+      description: Route and arguments transcribed from the live WordPress REST discovery document at https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document and are therefore left unspecified rather than invented.
+      tags:
+      - bu-cmb2-customizations
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: namespace
+        in: query
+        required: false
+        schema:
+          type: string
+          default: bu-cmb2-customizations/v1
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          default: view
+  /bu-cmb2-customizations/v1/bu-post-chooser:
+    get:
+      operationId: get-bu-cmb2-customizations-v1-bu-post-chooser
+      summary: GET /bu-cmb2-customizations/v1/bu-post-chooser
+      description: Route and arguments transcribed from the live WordPress REST discovery document at https://www.bu.edu/wp-json/ on 2026-08-30. Response bodies are not described by that document and are therefore left unspecified rather than invented.
+      tags:
+      - bu-cmb2-customizations
+      responses:
+        '200':
+          description: Successful response. Not probed; route declared by the live discovery document.
+        '401':
+          description: Not authenticated or not permitted (WordPress `rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: No route was found matching the URL and request method.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+components:
+  schemas:
+    RestError:
+      type: object
+      description: Standard WordPress REST error envelope, captured live from https://www.bu.edu/wp-json/bu-slideshow/v1/shows on 2026-08-30.
+      properties:
+        code:
+          type: string
+          examples:
+          - rest_forbidden
+          - rest_no_route
+        message:
+          type: string
+          examples:
+          - Sorry, you are not allowed to do that.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              examples:
+              - 401
+              - 404
+      required:
+      - code
+      - message
+      - data
