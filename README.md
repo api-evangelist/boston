@@ -1,4 +1,4 @@
-# Boston University (boston)
+# Boston University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,92 +64,125 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Boston University is a private research university in Boston, Massachusetts (chartered 1869). This repository catalogs its public developer/API footprint as an [APIs.json](https://apisjson.org) profile, profiled under the API Evangelist **university pipeline**, whose first question is not "is there a specification?" but **who operates the thing the specification describes**.
+Boston University is a private research university in Boston, Massachusetts, chartered in 1869, serving roughly 37,000 students across three campuses. Like most universities it is a federation of buyers rather than an API producer, and its programmable footprint has to be read that way. The one substantial machine-readable interface Boston University both operates AND authors is the WordPress REST API on www.bu.edu: nine of its fifteen namespaces are BU IS&T's own plugins — bu-alert, bu-blocks, bu-navigation, bu-slideshow, bu-tts and others — open-sourced at github.com/bu-ist and documented at developer.bu.edu, with some routes public and some returning 401. Alongside it, Boston University operates a Shibboleth SAML 2.0 identity provider at shib.bu.edu whose entity metadata is public, registered by InCommon and exported to eduGAIN with the REFEDS Research & Scholarship and SIRTFI entity categories. Everything else that looks like a Boston University API is a vendor's contract running under BU's name: OpenBU is a DSpace 7.6 instance operated by Atmire (open.bu.edu CNAMEs to boston-prod.cname.atmire.com and its OAI-PMH Identify returns the vendor's admin email), the library discovery layer is Ex Libris Primo, and the LMS is Blackboard Learn. Those are recorded here as tenant relationships, not as Boston University engineering. There is no central developer portal, no API key programme, no published API changelog, and the internal WEB APIs portal at webapi.bu.edu is NXDOMAIN.
 
-A university is a federation of buyers rather than an API producer, and Boston University reads exactly that way. Two surfaces are genuinely institution-operated and institution-authored; four more run under bu.edu hostnames but belong to vendors and are recorded here as **tenant relationships** rather than credited to the institution.
+**Areas:** University · Higher Education · Education · United States · Massachusetts · Private Research University · Research · Research Data · Library · Identity Federation · Content Management · Open Access
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/boston/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=boston-api-evangelist&utm_content=repo
+## Boston University on APIs.io
 
-## Type
+Everything profiled for Boston University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/boston/](https://apis.io/providers/boston/)** — or go straight to one of the APIs or properties below.
 
-- University / Private Research University / Index / Consumer / 3rd-Party
+### APIs (6)
 
-## Tags
+- [Boston University Shibboleth Identity Provider](https://apis.io/apis/boston/shibboleth-identity-federation/) — Boston University's SAML 2.0 identity provider, publishing machine-readable entity metadata at its own host. The EntityDescriptor carries entityID…
+- [OpenBU Repository — OAI-PMH and DSpace REST (Atmire-operated)](https://apis.io/apis/boston/openbu-oai/) — OpenBU is Boston University Libraries' open-access institutional repository. The content, the collections and the 2144 Handle prefix are Boston…
+- [BU Libraries Discovery (Ex Libris Primo)](https://apis.io/apis/boston/primo-discovery/) — Boston University Libraries' discovery layer runs on Ex Libris Primo under Boston University's tenant view 01BOSU_INST:BULS. The catalogue data is the…
+- [Blackboard Learn REST API (BU tenant)](https://apis.io/apis/boston/blackboard-learn/) — Boston University's learning management system is Blackboard Learn, running on the vendor's infrastructure behind a bu.edu hostname. The Learn public REST…
+- [AI API Access (Azure OpenAI / Amazon Bedrock)](https://apis.io/apis/boston/ai-api-access/) — Boston University IS&T brokers Large Language Model API keys to affiliated faculty, researchers, staff and departments, reselling access to Microsoft Azure…
+- [Boston University Website (WordPress REST)](https://apis.io/apis/boston/bu-edu-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the Boston University website at www.bu.edu: the route index of the site's content management system, catalogued…
 
-University, Higher Education, Education, United States, Massachusetts, Private Research University, Research, Research Data, Library, Identity Federation, Content Management, Open Access
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Institution-operated
+#### JSON Schema (1)
 
-- **Boston University WordPress REST API** — `x-operator: institution`. The discovery document at `https://www.bu.edu/wp-json/` advertises 237 routes across 15 namespaces. Nine of those namespaces (31 routes) are BU IS&T's own open-source WordPress plugins — `bu-alert`, `bu-access-control`, `bu-blocks`, `bu-cmb2-customizations`, `bu-navigation`, `bu-prepress`, `bu-site-manager`, `bu-slideshow`, `bu-tts` — published at [github.com/bu-ist](https://github.com/bu-ist) and documented at [developer.bu.edu](https://developer.bu.edu/). Some routes answer anonymous callers; privileged routes return `401 rest_forbidden`. Base URL: `https://www.bu.edu/wp-json`
-- **Boston University Shibboleth Identity Provider** — `x-operator: institution`. Public SAML 2.0 entity metadata at `https://shib.bu.edu/idp/shibboleth`, entityID `https://shib.bu.edu/idp/shibboleth`, scopes `bu.edu` and `alum.bu.edu`. Registered by InCommon, exported to eduGAIN, SWAMID and the UK Access Management Federation, asserting REFEDS Research & Scholarship and SIRTFI. Institution-operated by definition, and the cleanest institution-authored contract in this profile.
+The data models the API reads and writes.
 
-### Tenant relationships (real institutional facts, vendor engineering)
+- [Boston University WordPress REST API schemas](https://apis.io/schemas/boston/boston-wordpress-schemas/)
 
-- **OpenBU Repository — OAI-PMH and DSpace REST** — `x-operator: tenant` (Atmire). BU Libraries' institutional repository. The content, collections and `2144` Handle prefix are Boston University's; the deployment is Atmire's — `open.bu.edu` CNAMEs to `boston-prod.cname.atmire.com`, OAI-PMH `Identify` returns `adminEmail atmirenv@gmail.com`, and the DSpace 7.6 REST root advertises `atmire-versions` endpoints.
-- **BU Libraries Discovery (Ex Libris Primo)** — `x-operator: tenant`. `bu.primo.exlibrisgroup.com`, view `01BOSU_INST:BULS`.
-- **Blackboard Learn REST API (BU tenant)** — `x-operator: tenant`. `learn.bu.edu` CNAMEs to `bu.blackboard.com`; the public Learn REST API reports version `4000.21.0`.
-- **AI API Access (Azure OpenAI / Amazon Bedrock)** — `x-operator: tenant`. IS&T brokers LLM API keys to affiliated staff behind an approval form. The APIs are Microsoft's and Amazon's; what BU operates is the key-issuing process.
+#### JSON-LD (1)
 
-No vendor specification is saved under this slug.
+Linked-data contexts for the provider's vocabulary.
 
-## Artifacts
+- [Boston Context](https://apis.io/jsonld/boston/boston-context/)
 
-- OpenAPI (derived from the live discovery document, not published by BU): [openapi/boston-wordpress-api-openapi.yml](openapi/boston-wordpress-api-openapi.yml) — pristine copy in [openapi/_original/](openapi/_original/)
-- JSON Schema: [json-schema/boston-wordpress-schemas.json](json-schema/boston-wordpress-schemas.json)
-- Examples (verbatim captures): [examples/boston-wordpress-examples.yml](examples/boston-wordpress-examples.yml)
-- Authentication: [authentication/boston-authentication.yml](authentication/boston-authentication.yml)
-- Errors: [errors/boston-errors.yml](errors/boston-errors.yml)
-- Conformance: [conformance/boston-conformance.yml](conformance/boston-conformance.yml) — plus BU's own SAML metadata, saved unmodified at [conformance/boston-shibboleth-idp-metadata.xml](conformance/boston-shibboleth-idp-metadata.xml)
-- Lifecycle: [lifecycle/boston-lifecycle.yml](lifecycle/boston-lifecycle.yml)
-- Vocabulary: [vocabulary/boston-vocabulary.yml](vocabulary/boston-vocabulary.yml)
-- JSON-LD: [json-ld/boston-context.jsonld](json-ld/boston-context.jsonld)
-- Plans & Pricing: [plans/boston-plans-pricing.yml](plans/boston-plans-pricing.yml)
-- Rate Limits: [rate-limits/boston-rate-limits.yml](rate-limits/boston-rate-limits.yml)
-- FinOps: [finops/boston-finops.yml](finops/boston-finops.yml)
-- Domain Security: [security/boston-domain-security.yml](security/boston-domain-security.yml)
-- Review: [review.yml](review.yml)
+#### Security (2)
 
-## Conformance (Kin Score `education` regime)
+Authentication, trust centre, and vulnerability disclosure.
 
-| Standard | Status | Operator | Evidence |
-|---|---|---|---|
-| `saml` | conformant | institution | `https://shib.bu.edu/idp/shibboleth` — SAML 2.0 `EntityDescriptor` |
-| `shibboleth` | conformant | institution | Shibboleth scopes `bu.edu`, `alum.bu.edu`; InCommon-registered, in eduGAIN |
-| `oai-pmh` | conformant | tenant (Atmire) | `https://open.bu.edu/server/oai/request?verb=Identify`, 8 metadata prefixes, 100 sets |
-| `lti` | not assessed | tenant | Blackboard Learn is LTI-certified as a product; no BU-specific declaration found |
-| `orcid`, `datacite`, `crossref`, `scim`, `oneroster`, `ed-fi`, `caliper`, `qti` | not found | — | Looked for; recorded as absent rather than omitted |
+- [Boston Authentication](https://apis.io/security/boston/boston-authentication/)
+- [Boston Domain Security](https://apis.io/security/boston/boston-domain-security/)
 
-## Timestamps
+#### Plans and pricing (1)
 
-- Created: 2026-06-03
-- Modified: 2026-08-30
+Published plans, tiers and prices.
 
-## Common Properties
+- [Boston Plans Pricing](https://apis.io/plans/boston/boston-plans-pricing/)
 
-- Website: https://www.bu.edu/
-- Documentation: https://developer.bu.edu/
-- GitHub Organization: https://github.com/bu-ist (also https://github.com/bu-rcs)
-- Identity Federation: https://shib.bu.edu/idp/shibboleth
-- Research Repository: https://open.bu.edu/
-- Library Catalog: https://bu.primo.exlibrisgroup.com/discovery/search?vid=01BOSU_INST:BULS
-- Research Computing: https://www.bu.edu/tech/support/research/
-- AI Policy: https://www.bu.edu/aida/ai-education/ai-at-work/generative-ai-guidelines-for-bu-faculty-staff/
-- AI Tooling: https://www.bu.edu/aida/
-- Support: https://www.bu.edu/tech/support/
-- Terms of Service: https://www.bu.edu/policies/conditions-of-use-policy-computing-ethics/
-- Privacy Policy: https://www.bu.edu/policies/digital-privacy-statement/
-- Blog: https://www.bu.edu/today/ (RSS: https://www.bu.edu/today/feed/)
-- LinkedIn: https://www.linkedin.com/school/boston-university/
+#### Rate limits (1)
 
-## Notes
+Published request limits.
 
-All entries reflect URLs probed on 2026-08-30 with no credentials of any kind; no endpoints were fabricated. Surfaces hunted and **not found**: a course catalog or registrar API, an open data portal, dining, transit, a research-computing API, `llms.txt`, `apis.json`, `/.well-known/security.txt`, and any developer portal or API key programme — `www.bu.edu` returns a real 404 for each, not a soft 404. The internal WEB APIs portal at `webapi.bu.edu` is NXDOMAIN. `bus.bu.edu` is a student-built (BostonHacks) shuttle tracker served from GitHub Pages on a delegated `bu.edu` subdomain, with no API of its own, and is not credited to the institution. `profiles.bu.edu` is a Profiles RNS deployment on Boston University's own network, but four candidate API paths all returned 404.
+- [Boston Rate Limits](https://apis.io/rate-limits/boston/boston-rate-limits/)
 
-The single OpenAPI here was **derived** by transcribing the live WordPress discovery document and is marked as such throughout. Response schemas are left unspecified rather than invented, because Boston University publishes none. It is deliberately kept as **one document with one `apis[]` entry** rather than split per tag: ten per-tag files would read as ten times the footprint for one contract.
+#### FinOps (1)
 
-## Maintainers
+What the API costs to run, by operation.
 
-- Kin Lane — kin@apievangelist.com
+- [Boston Finops](https://apis.io/finops/boston/boston-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.bu.edu/)
+- [Documentation](https://developer.bu.edu/)
+- [Support](https://www.bu.edu/tech/support/)
+- [Blog](https://www.bu.edu/today/)
+- [Terms of service](https://www.bu.edu/policies/conditions-of-use-policy-computing-ethics/)
+- [Privacy policy](https://www.bu.edu/policies/digital-privacy-statement/)
+- [GitHub](https://github.com/bu-ist)
+
+## API Evangelist rating
+
+**Kin Score 21.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 48.2 |
+| Contract quality | 14.3 |
+| Contract governance | 3.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 26.3 |
+
+**Agent readiness 3.1** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/boston/](https://apis.io/providers/boston/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Boston University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/boston/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
